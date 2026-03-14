@@ -1,0 +1,36 @@
+# Source files (compiled to dist/)
+src/
+*.ts
+!*.d.ts
+
+# Development files
+.changeset/
+.github/
+.husky/
+tests/
+evals/
+
+# Config files
+.eslintrc*
+eslint.config.js
+tsconfig.json
+.prettierrc*
+.editorconfig
+
+# Build artifacts
+node_modules/
+*.log
+
+# Assets not needed for npm
+assets/
+
+# Other
+.DS_Store
+*.local
+.env*
+CHANGELOG.md
+smithery.yaml
+server.json
+gemini-extension.json
+Dockerfile
+.dockerignore

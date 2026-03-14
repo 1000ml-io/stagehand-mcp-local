@@ -1,0 +1,24 @@
+Stagehand MCP Server - Local Mode
+Copyright 2025 weijiafu14
+
+This project is a fork of mcp-server-browserbase:
+https://github.com/browserbase/mcp-server-browserbase
+
+Original work Copyright 2025 Browserbase, Inc.
+
+Licensed under the Apache License, Version 2.0.
+
+---
+
+This project includes software developed by:
+
+- Browserbase, Inc. (https://www.browserbase.com/)
+  Original MCP server implementation
+
+- Microsoft Corporation
+  Portions of browser automation code
+
+- Google Inc.
+  Portions of browser automation code
+
+See LICENSE file for full license text.

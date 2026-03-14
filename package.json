@@ -1,0 +1,72 @@
+{
+  "name": "@1000ml-io/stagehand-mcp-local",
+  "version": "1.1.0",
+  "description": "MCP server for AI browser automation using Stagehand - supports LOCAL mode and custom LLM gateways",
+  "keywords": [
+    "mcp",
+    "stagehand",
+    "browser-automation",
+    "ai",
+    "headless-chrome",
+    "playwright",
+    "claude",
+    "openai",
+    "local"
+  ],
+  "license": "Apache-2.0",
+  "author": "weijiafu14",
+  "homepage": "https://github.com/1000ml-io/stagehand-mcp-local",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1000ml-io/stagehand-mcp-local.git"
+  },
+  "bugs": {
+    "url": "https://github.com/1000ml-io/stagehand-mcp-local/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "bin": {
+    "stagehand-mcp-local": "./cli.js"
+  },
+  "files": [
+    "dist",
+    "cli.js",
+    "index.js",
+    "index.d.ts",
+    "config.d.ts",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm clean && pnpm build",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@browserbasehq/sdk": "^2.6.0",
+    "@browserbasehq/stagehand": "^3.0.3",
+    "@mcp-ui/server": "^5.10.0",
+    "@modelcontextprotocol/sdk": "^1.13.1",
+    "commander": "^14.0.0",
+    "dotenv": "^16.4.6",
+    "sharp": "^0.33.0",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "eslint": "^9.29.0",
+    "prettier": "^3.6.1",
+    "typescript": "^5.6.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
