@@ -38,13 +38,17 @@ function ensureConsoleListener(page: any, sessionId: string): void {
     });
   });
 
-  page.on("pageerror", (error: any) => {
-    logs.push({
-      type: "error",
-      text: `[PageError] ${error.message || String(error)}`,
-      timestamp: Date.now(),
+  try {
+    page.on("pageerror", (error: any) => {
+      logs.push({
+        type: "error",
+        text: `[PageError] ${error.message || String(error)}`,
+        timestamp: Date.now(),
+      });
     });
-  });
+  } catch {
+    // pageerror event not supported on this page type
+  }
 }
 
 // --- Tool: Get Console Logs ---

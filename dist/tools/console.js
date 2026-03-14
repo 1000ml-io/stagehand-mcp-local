@@ -17,13 +17,18 @@ function ensureConsoleListener(page, sessionId) {
             timestamp: Date.now(),
         });
     });
-    page.on("pageerror", (error) => {
-        logs.push({
-            type: "error",
-            text: `[PageError] ${error.message || String(error)}`,
-            timestamp: Date.now(),
+    try {
+        page.on("pageerror", (error) => {
+            logs.push({
+                type: "error",
+                text: `[PageError] ${error.message || String(error)}`,
+                timestamp: Date.now(),
+            });
         });
-    });
+    }
+    catch {
+        // pageerror event not supported on this page type
+    }
 }
 // --- Tool: Get Console Logs ---
 const ConsoleLogsInputSchema = z.object({
