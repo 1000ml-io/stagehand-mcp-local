@@ -58,10 +58,11 @@ export async function resolveConfig(cliOptions: CLIOptions): Promise<Config> {
   // --- Add Model API Key from Env Vars ---
   if (!mergedConfig.modelApiKey) {
     mergedConfig.modelApiKey =
-      process.env.GEMINI_API_KEY ||
-      process.env.GOOGLE_API_KEY ||
+      process.env.MODEL_API_KEY ||
       process.env.OPENAI_API_KEY ||
-      process.env.ANTHROPIC_API_KEY;
+      process.env.ANTHROPIC_API_KEY ||
+      process.env.GEMINI_API_KEY ||
+      process.env.GOOGLE_API_KEY;
   }
 
   // --------------------------------
