@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { captureScreenshot, formatScreenshotMarker } from "../utils/screenshot.js";
+import { ensureConsoleListener } from "./console.js";
 const NavigateInputSchema = z.object({
     url: z.string().describe("The URL to navigate to"),
 });
@@ -19,6 +20,8 @@ async function handleNavigate(context, params) {
             if (!page) {
                 throw new Error("No active page available");
             }
+            // Attach console listener before navigation to capture all logs
+            ensureConsoleListener(page, context.currentSessionId);
             await page.goto(params.url, { waitUntil: "domcontentloaded" });
             // In LOCAL mode, we don't need browserbaseSessionId
             if (!isLocalMode) {

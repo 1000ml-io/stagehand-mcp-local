@@ -3,6 +3,7 @@ import type { Tool, ToolSchema, ToolResult } from "./tool.js";
 import type { Context } from "../context.js";
 import type { ToolActionResult } from "../types/types.js";
 import { captureScreenshot, formatScreenshotMarker } from "../utils/screenshot.js";
+import { ensureConsoleListener } from "./console.js";
 
 const NavigateInputSchema = z.object({
   url: z.string().describe("The URL to navigate to"),
@@ -32,6 +33,8 @@ async function handleNavigate(
       if (!page) {
         throw new Error("No active page available");
       }
+      // Attach console listener before navigation to capture all logs
+      ensureConsoleListener(page, context.currentSessionId);
       await page.goto(params.url, { waitUntil: "domcontentloaded" });
 
       // In LOCAL mode, we don't need browserbaseSessionId
